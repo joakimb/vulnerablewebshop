@@ -2,7 +2,11 @@ vuln webshop
 
 setup:
 
-$ sudo apt-get install vagrant
+$ wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb
+
+$ sudo dpkg -i vagrant_1.7.4_x86_64.deb 
+
+$ sudo apt-get install linux-headers-generic
 
 $ sudo apt-get install virtualbox
 
