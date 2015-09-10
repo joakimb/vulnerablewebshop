@@ -2,7 +2,9 @@ vuln webshop
 
 setup:
 
-install virtualbox and vagrant on linux / osx
+$ sudo apt-get install vagrant
+
+$ sudo apt-get install virtualbox
 
 $ git clone git@bitbucket.org:joakimb/vulnerablewebshop.git vulnweb
 
