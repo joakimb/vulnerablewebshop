@@ -14,10 +14,10 @@ $ git clone git@bitbucket.org:joakimb/vulnerablewebshop.git vulnweb
 
 $ cd vulnweb
 
-$ vagrant up #start vm
+$ vagrant up       # startar vm
 
-$ vagrant ssh #login to vm
+$ vagrant ssh      #loggar in till vm om man vill
 
-Sen kan man se hemsidan på localhost:8080
+Sen kan man se hemsidan på localhost:8080 på hostmaskinen, inte VM-en
 
 filer i mappen html kan editeras direkt på host-maskin, VM:ens websever läser därifrån
