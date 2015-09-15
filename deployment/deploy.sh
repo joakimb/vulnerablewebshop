@@ -24,3 +24,4 @@ mysql -u root -p -e "$QUERY"
 
 ###### FILL PRODUCT INVENTORY
 
+php -f ./fill_product_inventory.php $DB $USER $PASS
