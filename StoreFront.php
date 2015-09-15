@@ -1,8 +1,5 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 1);
-
-include 'StoreFront.php';
-
-showStoreFront();
+function showStoreFront(){
+	echo "<p>Hello Wooooooorld!</p>";
+}
 ?>
