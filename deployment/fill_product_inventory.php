@@ -12,8 +12,13 @@ while (!feof($inventory)){
    $price= fgets($inventory);
    $description = fgets($inventory);
    $imgPath = fgets($inventory);
+   insert($name, $price, $description, $imgPath);
 }
 
 fclose($inventory);
+
+function insert($name, $price, $description, $imgPath){
+
+}
 
 ?> 
