@@ -2,6 +2,7 @@
 
 * git clone git@bitbucket.org:joakimb/vulnerablewebshop.git /var/www/html/vulnweb/
 
+* cd /var/www/html/vulnweb/deployment
 
 * sh deploy.sh
 
