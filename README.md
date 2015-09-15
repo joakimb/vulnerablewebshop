@@ -3,6 +3,6 @@
 * git clone git@bitbucket.org:joakimb/vulnerablewebshop.git /var/www/html/vulnweb/
 
 
-*sh deploy.sh
+* sh deploy.sh
 
 Nu kan hemsidan nås på http://localhost/vulnweb/index.php
