@@ -1,0 +1,10 @@
+PRODUCT
+iphone5
+3000
+Iphone 5 is a 4 inch smartphone.
+iphone_5.png
+PRODUCT
+nexus5
+3500
+Nexus 5 is a 5 inch smartphone.
+nexus_5.png
