@@ -25,3 +25,14 @@ mysql -u root -p -e "$QUERY"
 ###### FILL PRODUCT INVENTORY
 
 php -f ./fill_product_inventory.php $DB $USER $PASS
+
+###### MAKE CONFIG
+echo "<?php class"  > ../Config.php
+echo "";
+echo "//Generated file, do not edit!!!!!!!!" >> ../Config.php
+echo "";
+echo "Config {" >> ../Config.php
+echo " static \$db = \"$DB\";"  >> ../Config.php
+echo " static \$user = \"$USER\";" >> ../Config.php
+echo " static \$pass = \"$PASS\";" >> ../Config.php
+echo "} ?>" >> ../Config.php
