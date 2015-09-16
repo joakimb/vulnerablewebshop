@@ -1,6 +1,6 @@
 <?php
 require 'Config.php';
-
+require 'Product.php';
 class DBHandle {
 	
 	var $pdo;
@@ -17,10 +17,24 @@ class DBHandle {
 		$query = $this->pdo->prepare("SELECT * FROM products");
 		$query->execute();
 
-		/* Fetch all of the remaining rows in the result set */
 		$result = $query->fetchAll();
-		return $result;
+		$products = array();	
 
+		for ($i=0; $i < count($result); $i++) { 
+
+			$row = $result[$i];
+			
+			$product = new Product();
+			$product->productId = $row["product_id"];
+			$product->title = $row["title"];
+			$product->price = $row["price"];
+			$product->description = $row["description"];
+			$product->imgPath = $row["img_path"];
+			
+			$products[$i] = $product;
+		}
+		
+		return $products;
 	}
 
 }

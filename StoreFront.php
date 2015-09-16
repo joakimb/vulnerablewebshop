@@ -5,6 +5,6 @@ function showStoreFront(){
 	//echo "<p>";
 	$dbHandle = new DBHandle();
 	$result = $dbHandle->getProducts();
-	print_r($result);
+	echo "<p>Number of products: ". count($result) . "</p>";
 }
 ?>
