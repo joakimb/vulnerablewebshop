@@ -1,0 +1,12 @@
+/* #=id, .=class*/
+
+body {
+    background-color: lightblue;
+}
+
+div.main {
+	background-color: lightgray;
+	float: center;
+	width: 60%;
+	margin: auto; /*center*/
+}
