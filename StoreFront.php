@@ -2,10 +2,17 @@
 include 'DBHandle.php';
 
 function showStoreFront(){
-	echo "<p>Hello Wooooooorld!</p>";
-	//echo "<p>";
+	echo "<h2 id=\"sf_header\">phones-R-us</h2>";
+	echo "<p>Our products:</p>";
+
 	$dbHandle = new DBHandle();
-	$result = $dbHandle->getProducts();
-	echo "<p>Number of products: ". count($result) . "</p>";
+	$products = $dbHandle->getProducts();
+	for ($i=0; $i < count($products); $i++) { 
+		$product = $products[$i];
+		echo $product->title . "<br>";
+		echo $product->description. "<br>";
+		echo $product->price . " sek<br>";
+		echo "<br>";
+	}
 }
 ?>

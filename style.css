@@ -11,3 +11,7 @@ div.main {
 	height: 100%;
 	margin: auto; /*center*/
 }
+
+#sf_header {
+	text-align: center;
+}
