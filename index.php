@@ -1,7 +1,7 @@
 <?php
 error_reporting(-1);
 ini_set('display_errors', 1);
-include 'StoreFront.php';
+
 ?>
 
 <html>
@@ -11,7 +11,12 @@ include 'StoreFront.php';
 </head>
 <body>
 	<div class="main">
-		<?php showStoreFront();?>
+		<?php 
+
+			include("Header.php");
+			include("StoreFront.php"); 
+
+		?>
 	</div>
 </body>
 </html>

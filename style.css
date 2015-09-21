@@ -4,11 +4,21 @@ body {
     background-color: lightblue;
 }
 
+#logsign {
+	float: right;
+}
+
 div.main {
 	background-color: lightgray;
 	float: center;
 	width: 60%;
 	height: 100%;
+	margin: auto; /*center*/
+}
+
+div.header {
+	background-color: white;
+	float: center;
 	margin: auto; /*center*/
 }
 

@@ -1,8 +1,10 @@
 <?php
 include 'DBHandle.php';
 
+showStoreFront();
+
 function showStoreFront(){
-	echo "<h2 id=\"sf_header\">phones-R-us</h2>";
+
 	echo "<p>Our products:</p>";
 
 	$dbHandle = new DBHandle();
