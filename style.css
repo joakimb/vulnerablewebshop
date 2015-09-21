@@ -20,6 +20,7 @@ div.header {
 	background-color: white;
 	float: center;
 	margin: auto; /*center*/
+	overflow: auto;
 }
 
 #sf_header {
