@@ -5,18 +5,18 @@
 	<div>
 
 		<form class="login">
-			<input type="button" onClick="signUpForm()" value="Sign up">
+			<input type="button" id="signin" onClick="signUpForm()" value="Sign up">
 		</form>
 
 		<form class="login" >
 			<input id="cancel" type="hidden" onClick="cancelSignup()" value="Cancel">
 		</form>
 
-		<form class="login" method="link" action="Login.php">
+		<form class="login" id="signupin" method="post" action="Login.php">
 			<input type="text" name="username" value="username">
 			<input type="text" name="password" value="password">
 			<input type="hidden" id="address" name="address" value="address">
-			<input type="submit" value="Sign in">
+			<input type="submit" id="submit" value="Sign in">
 		</form>
 
 	</div>
@@ -25,17 +25,29 @@
 <script>
 
 function signUpForm(){
-	var form = document.getElementById("address");
-	form.setAttribute("type", "text");
+	var address = document.getElementById("address");
+	address.setAttribute("type", "text");
+	var signin = document.getElementById("signin");
+	signin.setAttribute("type", "hidden");
 	var cancel = document.getElementById("cancel");
 	cancel.setAttribute("type", "button");
+	var submit = document.getElementById("submit");
+	submit.setAttribute("value", "Submit");
+	var form = document.getElementById("signupin");
+	form.setAttribute("action", "SignUp.php");
 }
 
 function cancelSignup(){
-	var form = document.getElementById("address");
-	form.setAttribute("type", "hidden");
+	var address = document.getElementById("address");
+	address.setAttribute("type", "hidden");
+	var signin = document.getElementById("signin");
+	signin.setAttribute("type", "button");
 	var cancel = document.getElementById("cancel");
 	cancel.setAttribute("type", "hidden");
+	var submit = document.getElementById("submit");
+	submit.setAttribute("value", "Sign in");
+	var form = document.getElementById("form");
+	form.setAttribute("action", "Login.php");
 }
 
 </script>
