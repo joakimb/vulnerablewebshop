@@ -44,14 +44,13 @@ class DBHandle {
 
 	public function newUser($user, $pass, $addr){
 		try{
-			print_r($pdo);
 			$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
 
 			$statement->execute(array($user, $pass, $addr));
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 		}
-		
+		echo "You have been registered!";
 
 		
 	}	
