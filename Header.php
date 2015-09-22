@@ -1,8 +1,14 @@
+
+<?php
+	$loggedIn = validLoginCookie();
+?>
+
 <div class="header">
 	<div>
 		<h2 id="sf_header">phones-R-us</h2>
 	</div>
-	<div>
+	<?php if (!$loggedIn) : ?>
+	<div id="loginheader">
 
 		<form class="login">
 			<input type="button" id="signin" onClick="signUpForm()" value="Sign up">
@@ -20,11 +26,11 @@
 		</form>
 
 	</div>
-	<div>
-		<?php
-			validLoginCookie();
-		?>
+	<?php else : ?>
+	<div id="loggedinheader">
+		loggen in
 	</div>
+	<?php endif; ?>
 </div>
 
 <script>
@@ -66,12 +72,7 @@ function cancelSignup(){
 
 		$cookieUser = "user";
 
-		if(!isset($_COOKIE[$cookieUser])) {
-    		echo "Cookie named '" . $cookieUser . "' is not set!";
-		} else {
-   			echo "Cookie '" . $cookieUser . "' is set!<br>";
-   			echo "Value is: " . $_COOKIE[$cookieUser];
-	}
+		return isset($_COOKIE[$cookieUser]);
 	
-}
+	}
 ?>
