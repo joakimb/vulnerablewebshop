@@ -20,6 +20,11 @@
 		</form>
 
 	</div>
+	<div>
+		<?php
+			validLoginCookie();
+		?>
+	</div>
 </div>
 
 <script>
@@ -57,7 +62,16 @@ function cancelSignup(){
 
 
 
-	function showHeader(){
+	function validLoginCookie(){
+
+		$cookieUser = "user";
+
+		if(!isset($_COOKIE[$cookieUser])) {
+    		echo "Cookie named '" . $cookieUser . "' is not set!";
+		} else {
+   			echo "Cookie '" . $cookieUser . "' is set!<br>";
+   			echo "Value is: " . $_COOKIE[$cookieUser];
+	}
 	
 }
 ?>

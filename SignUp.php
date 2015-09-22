@@ -6,6 +6,7 @@
  	$addr = $_POST["address"];
 
  	$dbHandle = new DBHandle();
- 	$dbHandle->newUser($uname, $pass, $addr);	
+ 	$dbHandle->newUser($uname, $pass, $addr);
+
  ?>
 
