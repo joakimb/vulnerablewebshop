@@ -28,7 +28,12 @@
 	</div>
 	<?php else : ?>
 	<div id="loggedinheader">
-		loggen in
+		<form class="login" id="signupin" method="get" action="Cart.php">
+			<input type="submit" id="submit" value="Show Cart">
+		</form>
+		<form class="login" id="signupin" method="get" action="SignOut.php">
+			<input type="submit" id="submit" value="Sign Out">
+		</form>
 	</div>
 	<?php endif; ?>
 </div>
