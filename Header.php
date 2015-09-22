@@ -12,7 +12,7 @@
 			<input id="cancel" type="hidden" onClick="cancelSignup()" value="Cancel">
 		</form>
 
-		<form class="login" id="signupin" method="post" action="Login.php">
+		<form class="login" id="signupin" method="post" action="SignIn.php">
 			<input type="text" name="username" value="username">
 			<input type="text" name="password" value="password">
 			<input type="hidden" id="address" name="address" value="address">
@@ -47,7 +47,7 @@ function cancelSignup(){
 	var submit = document.getElementById("submit");
 	submit.setAttribute("value", "Sign in");
 	var form = document.getElementById("form");
-	form.setAttribute("action", "Login.php");
+	form.setAttribute("action", "SignIn.php");
 }
 
 </script>

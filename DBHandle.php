@@ -42,13 +42,27 @@ class DBHandle {
 		return $products;
 	}
 
+	public function getPwd($user){
+		try{
+		$query = $this->pdo->prepare("SELECT pwd FROM users where uname = ?");
+		$query->execute(array($user));
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			die();
+		}
+		$result = $query->fetch();
+		return $result["pwd"];
+	}
+
 	public function newUser($user, $pass, $addr){
 		try{
 			$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
 
 			$statement->execute(array($user, $pass, $addr));
 		} catch (PDOException $e) {
-			echo "Error: " . $e->getMessage();
+			echo "Username taken";
+			die();
+			//echo "Error: " . $e->getMessage();
 		}
 		echo "You have been registered!";
 
