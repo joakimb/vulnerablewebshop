@@ -6,10 +6,14 @@ class DBHandle {
 	var $pdo;
 
 	public function DBHandle(){
-		$db = Config::$db;
-		$user = Config::$user;
-		$pass = Config::$pass;
-		$this->pdo = new PDO("mysql:host=localhost;dbname=$db", $user, $pass);
+		try{
+			$db = Config::$db;
+			$user = Config::$user;
+			$pass = Config::$pass;
+			$this->pdo = new PDO("mysql:host=localhost;dbname=$db", $user, $pass);
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+		}
 	}
 
 	public function getProducts(){
@@ -36,6 +40,19 @@ class DBHandle {
 		
 		return $products;
 	}
+
+	public function newUser($user, $pass, $addr){
+		echo "jjjjj";
+		$statement = $pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(:uname, :pwd, :address)");
+		$res = $statement->execute(array(
+    		"uname" => $user,
+   			"pwd" => $pass,
+   			"address => $addr"
+		));
+
+
+		
+	}	
 
 }
 
