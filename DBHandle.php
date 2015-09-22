@@ -11,6 +11,7 @@ class DBHandle {
 			$user = Config::$user;
 			$pass = Config::$pass;
 			$this->pdo = new PDO("mysql:host=localhost;dbname=$db", $user, $pass);
+			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 		}
@@ -42,14 +43,15 @@ class DBHandle {
 	}
 
 	public function newUser($user, $pass, $addr){
-		echo "jjjjj";
-		$statement = $pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(:uname, :pwd, :address)");
-		$res = $statement->execute(array(
-    		"uname" => $user,
-   			"pwd" => $pass,
-   			"address => $addr"
-		));
+		try{
+			print_r($pdo);
+			$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
 
+			$statement->execute(array($user, $pass, $addr));
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+		}
+		
 
 		
 	}	
