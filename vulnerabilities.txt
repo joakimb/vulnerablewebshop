@@ -1,0 +1,7 @@
+predicatable cookies
+csrf
+xss
+no ssl
+no secure password storage
+path traversion
+sql injection?

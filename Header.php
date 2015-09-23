@@ -1,8 +1,14 @@
+
+<?php
+	$loggedIn = validLoginCookie();
+?>
+
 <div class="header">
 	<div>
 		<h2 id="sf_header">phones-R-us</h2>
 	</div>
-	<div>
+	<?php if (!$loggedIn) : ?>
+	<div id="loginheader">
 
 		<form class="login">
 			<input type="button" id="signin" onClick="signUpForm()" value="Sign up">
@@ -12,7 +18,7 @@
 			<input id="cancel" type="hidden" onClick="cancelSignup()" value="Cancel">
 		</form>
 
-		<form class="login" id="signupin" method="post" action="Login.php">
+		<form class="login" id="signupin" method="post" action="SignIn.php">
 			<input type="text" name="username" value="username">
 			<input type="text" name="password" value="password">
 			<input type="hidden" id="address" name="address" value="address">
@@ -20,6 +26,16 @@
 		</form>
 
 	</div>
+	<?php else : ?>
+	<div id="loggedinheader">
+		<form class="login" id="signupin" method="get" action="Cart.php">
+			<input type="submit" id="submit" value="Show Cart">
+		</form>
+		<form class="login" id="signupin" method="get" action="SignOut.php">
+			<input type="submit" id="submit" value="Sign Out">
+		</form>
+	</div>
+	<?php endif; ?>
 </div>
 
 <script>
@@ -47,7 +63,7 @@ function cancelSignup(){
 	var submit = document.getElementById("submit");
 	submit.setAttribute("value", "Sign in");
 	var form = document.getElementById("form");
-	form.setAttribute("action", "Login.php");
+	form.setAttribute("action", "SignIn.php");
 }
 
 </script>
@@ -57,7 +73,11 @@ function cancelSignup(){
 
 
 
-	function showHeader(){
+	function validLoginCookie(){
+
+		$cookieUser = "user";
+
+		return isset($_COOKIE[$cookieUser]);
 	
-}
+	}
 ?>

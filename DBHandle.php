@@ -6,10 +6,15 @@ class DBHandle {
 	var $pdo;
 
 	public function DBHandle(){
-		$db = Config::$db;
-		$user = Config::$user;
-		$pass = Config::$pass;
-		$this->pdo = new PDO("mysql:host=localhost;dbname=$db", $user, $pass);
+		try{
+			$db = Config::$db;
+			$user = Config::$user;
+			$pass = Config::$pass;
+			$this->pdo = new PDO("mysql:host=localhost;dbname=$db", $user, $pass);
+			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+		}
 	}
 
 	public function getProducts(){
@@ -36,6 +41,33 @@ class DBHandle {
 		
 		return $products;
 	}
+
+	public function getPwd($user){
+		try{
+		$query = $this->pdo->prepare("SELECT pwd FROM users where uname = ?");
+		$query->execute(array($user));
+		} catch (PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			die();
+		}
+		$result = $query->fetch();
+		return $result["pwd"];
+	}
+
+	public function newUser($user, $pass, $addr){
+		try{
+			$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
+
+			$statement->execute(array($user, $pass, $addr));
+		} catch (PDOException $e) {
+			echo "Username taken";
+			die();
+			//echo "Error: " . $e->getMessage();
+		}
+		echo "You have been registered!";
+
+		
+	}	
 
 }
 
