@@ -12,7 +12,7 @@ sudo a2ensite $HOST_NAME;
 sudo a2enmod ssl;
 sudo a2ensite default-ssl;
 
-mkdir /etc/apache2/sites-enabled/$HOST_NAME/;
+sudo mkdir /etc/apache2/sites-enabled/$HOST_NAME/;
 
 sudo cp ../keys/server.crt /etc/apache2/sites-enabled/$HOST_NAME/ssl.crt;
 sudo cp ../keys/server.key /etc/apache2/sites-enabled/$HOST_NAME/ssl.key;
@@ -20,7 +20,7 @@ sudo cp ../keys/server.key /etc/apache2/sites-enabled/$HOST_NAME/ssl.key;
 
 
 
-echo "<VirtualHost *:443>
+sudo echo "<VirtualHost *:443>
 	ServerName localhost
 	
 	DocumentRoot \"/var/www/html/\"
@@ -44,7 +44,7 @@ echo "<VirtualHost *:443>
 
 	
 
-</VirtualHost>" >> /etc/apache2/sites-enabled/$HOST_NAME.conf;
+</VirtualHost>" > /etc/apache2/sites-enabled/$HOST_NAME.conf;
 
 
 
