@@ -15,11 +15,10 @@ function showStoreFront(){
 		echo $product->title . "<br>";
 		echo $product->description. "<br>";
 		echo $product->price . " sek<br>";
-		//echo $product->productId . " sek<br>";
 		echo "<br>";
 		?>
 		<form method="get" action="AddToCart.php">
-			<input type="hidden" name="product_id" value="<?php $product->productId; ?>">
+			<input type="hidden" name="product_id" value="<?php echo $product->productId; ?>">
 			<input type="submit" id="submit" value="Buy">
 		</form>
 		<?php

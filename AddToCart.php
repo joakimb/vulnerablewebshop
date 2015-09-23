@@ -3,7 +3,9 @@ session_start();
  
 // get the product id
 $id = isset($_GET['product_id']) ? $_GET['product_id'] : "";
+echo $id;
 
+//fixa med cart, redirect tillbaka
  
 /*
  * check if the 'cart' session array was created
