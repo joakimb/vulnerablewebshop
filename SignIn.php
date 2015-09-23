@@ -17,6 +17,7 @@
  	}
 
  	function setLoginCookie($uname){
+ 		session_start();
  		setcookie("user", $uname, time() + 3600, "/");
  	}
 ?>
