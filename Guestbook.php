@@ -5,7 +5,6 @@ showGuestbook();
 
 	 	$comment = isset($_POST['comment']) ? $_POST['comment'] : '';
 	 	$submit = isset($_POST['submit']) ? $_POST['submit'] : '';
-
 	 	$dbHandle = new DBHandle();
 
  		

@@ -111,11 +111,31 @@ if (count($res) > 0) {
 		return $result["pwd"];
 	}
 
+	public function checkPwd($clearPW, $user){
+		$storedPW = $this->getPwd($user);
+		$hashedPW = $this->passwordHash($clearPW);
+		
+		if($hashedPW == $storedPW){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function passwordHash($password){
+		$salt = "USLAHdlqwindsdjfnNdwluei238943729?!??????**^^:;hsiYgdyuwiwuYsvhjvdsmxzlaaIWGubssakd";
+		$hashedPW = hash(SHA256, $salt.$password);
+
+		return $hashedPW;
+	}
+
 	public function newUser($user, $pass, $addr){
 		try{
-			$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
+		$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
 
-			$statement->execute(array($user, $pass, $addr));
+		$hashedPW = $this->passwordHash($pass);
+		$statement->execute(array($user, $hashedPW, $addr));
+
 		} catch (PDOException $e) {
 			echo "Username taken";
 			die();
