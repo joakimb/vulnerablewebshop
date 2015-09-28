@@ -1,6 +1,7 @@
 <?php
 require 'Config.php';
 require 'Product.php';
+require 'Comment.php';
 class DBHandle {
 	
 	var $pdo;
@@ -16,6 +17,50 @@ class DBHandle {
 			echo "Error: " . $e->getMessage();
 		}
 	}
+
+    public function putComment($comment){
+        try{
+            $query = $this->pdo->prepare("INSERT INTO comments(comment) VALUES(?)");
+ 
+            $query->execute(array($comment));
+ 
+            }catch(PDOException $e){
+                echo "Error: " . $e->getMessage();
+                die();
+                }
+//        echo "Thanks for your comment";
+        }
+
+    public function getComments(){
+
+    echo("yoyotsrgrg");
+    	$query = $this->pdo->prepare("SELECT * FROM comments;");
+		$query->execute();
+
+		$res = $query->fetchAll();
+
+
+if (count($res) > 0) {
+    // output data of each row
+		for ($i=0; $i < count($res); $i++) { 
+			echo("y");
+			$row = $res[$i];
+	
+
+			$comment = new Comment();
+			$comment->commentId = $row["comment_id"];
+			$comment->comment = $row["comment"];
+
+//			$comment->user = $row["uname"];
+			$comment = $row["comment"];
+			echo $comment . '<br />';
+			$comments[$i] = $comment;
+		}
+
+		return $comments;
+    }
+  
+}
 
 	public function getProducts(){
 
