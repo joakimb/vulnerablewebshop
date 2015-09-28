@@ -20,13 +20,9 @@
 
 		<form class="login" id="signupin" method="post" action="SignIn.php">
 			<input type="text" name="username" value="username">
-			<input type="text" name="password" value="password">
+			<input type="password" name="password" value="password">
 			<input type="hidden" id="address" name="address" value="address">
 			<input type="submit" id="submit" value="Sign in">
-		</form>
-
-		<form class="comments" id="comments" method="get" action="showGuestbook.php">
-			<input type="submit" id="submit" value="Guestbook">
 		</form>
 
 	</div>
@@ -34,6 +30,10 @@
 	<div id="loggedinheader">
 		<form class="login" id="signupin" method="get" action="Cart.php">
 			<input type="submit" id="submit" value="Show Cart">
+		</form>
+
+		<form class="comments" id="comments" method="get" action="showGuestbook.php">
+			<input type="submit" id="submit" value="Guestbook">
 		</form>
 
 		<form class="login" id="signupin" method="get" action="SignOut.php">
