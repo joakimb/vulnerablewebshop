@@ -3,9 +3,11 @@
 include 'DBHandle.php';
 showGuestbook();
 
-	 	$comment = $_POST['comment'];
-	 	$submit = $_POST['submit'];
+	 	$comment = isset($_POST['comment']) ? $_POST['comment'] : '';
+	 	$submit = isset($_POST['submit']) ? $_POST['submit'] : '';
+
 	 	$dbHandle = new DBHandle();
+
  		
 if($submit){
 	if($comment){
@@ -37,7 +39,7 @@ function showGuestbook(){
 <form action='showGuestbook.php' method='POST'>
   Comment:<br />
   <textarea name="comment" rows="20" cols="80"></textarea>
-  <input type='submit' name='submit' value='Comment' />  
+  <input name='submit' type='submit' value='Comment' />  
 </form>
 
 	<?php

@@ -33,7 +33,6 @@ class DBHandle {
 
     public function getComments(){
 
-    echo("yoyotsrgrg");
     	$query = $this->pdo->prepare("SELECT * FROM comments;");
 		$query->execute();
 
@@ -43,7 +42,6 @@ class DBHandle {
 if (count($res) > 0) {
     // output data of each row
 		for ($i=0; $i < count($res); $i++) { 
-			echo("y");
 			$row = $res[$i];
 	
 
@@ -53,7 +51,7 @@ if (count($res) > 0) {
 
 //			$comment->user = $row["uname"];
 			$comment = $row["comment"];
-			echo $comment . '<br />';
+			echo $i . '. ' . $comment . '<br /> <br />';
 			$comments[$i] = $comment;
 		}
 
