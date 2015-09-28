@@ -5,9 +5,10 @@
  	$pass = $_POST["password"]; 
 
  	$dbHandle = new DBHandle();
- 	$dbPass = $dbHandle->getPwd($uname);
+// 	$dbPass = $dbHandle->getPwd($uname);
+// 	$isValid = $dbHandle->checkPwd($pass, $uname);
 
- 	if(!strcmp($pass, $dbPass)){
+ 	if($dbHandle->checkPwd($pass, $uname)){
  		setLoginCookie($uname);
  		echo "Logged in";
  		header('Location: http://'.$_SERVER['HTTP_HOST'] . "/vulnweb/");
