@@ -59,6 +59,20 @@ if (count($res) > 0) {
     }
   
 }
+	public function getProductPrice($id){
+
+		query = $this->pdo->prepare("SELECT price FROM products where product_id = ?");
+		$query->execute(array($id));
+
+		$result = $query->fetchAll();
+		$products = array();	
+
+		
+		return $result[0]["price"];
+	}
+
+
+
 
 	public function getProducts(){
 
