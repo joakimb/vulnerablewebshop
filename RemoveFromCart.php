@@ -9,10 +9,13 @@ echo $id;
 	    $_SESSION['cart_items'] = array();
 	}else{
 	    //$_SESSION['cart_items'][$id]=$name;
-		$_SESSION['cart_items'][$id] = $_SESSION['cart_items'][$id]+1;
+	
+		$_SESSION['cart_items'][$id] = $_SESSION['cart_items'][$id]-1;
 
-	    // redirect to product list and tell the user it was added to cart
-	   // header('Location: products.php?action=added&id' . $id . '&name=' . $name);
+		if($_SESSION['cart_items'][$id] < 0){
+			$_SESSION['cart_items'][$id] = 0;
+		}
+
 		header('Location: Cart.php');
 	}
 
