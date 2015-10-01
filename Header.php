@@ -35,11 +35,13 @@
 		<form class="comments" id="comments" method="get" action="showGuestbook.php">
 			<input type="submit" id="submit" value="Guestbook">
 		</form>
+		Signed in as: <?php echo($_COOKIE["user"]);
 
+		?>
 		<form class="login" id="signupin" method="get" action="SignOut.php">
 			<input type="submit" id="submit" value="Sign Out">
 		</form>
-
+		
 	</div>
 	<?php endif; ?>
 </div>

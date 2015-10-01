@@ -39,29 +39,28 @@ class DBHandle {
 		$res = $query->fetchAll();
 
 
-if (count($res) > 0) {
-    // output data of each row
-		for ($i=0; $i < count($res); $i++) { 
-			$row = $res[$i];
-	
+		if (count($res) > 0) {
+		    // output data of each row
+				for ($i=0; $i < count($res); $i++) { 
+					$row = $res[$i];
 
-			$comment = new Comment();
-			$comment->commentId = $row["comment_id"];
-			$comment->comment = $row["comment"];
+					$comment = new Comment();
+					$comment->commentId = $row["comment_id"];
+					$comment->comment = $row["comment"];
 
-//			$comment->user = $row["uname"];
-			$comment = $row["comment"];
-			echo $i . '. ' . $comment . '<br /> <br />';
-			$comments[$i] = $comment;
-		}
+		//			$comment->user = $row["uname"];
+					$comment = $row["comment"];
+					echo $i . '. ' . $comment . '<br /> <br />';
+					$comments[$i] = $comment;
+				}
 
-		return $comments;
+				return $comments;
     }
   
 }
 	public function getProductPrice($id){
 
-		query = $this->pdo->prepare("SELECT price FROM products where product_id = ?");
+		$query = $this->pdo->prepare("SELECT price FROM products where product_id = ?");
 		$query->execute(array($id));
 
 		$result = $query->fetchAll();

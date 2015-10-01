@@ -25,22 +25,30 @@ session_start();
 
 			$dbHandle = new DBHandle();
 			$products = $dbHandle->getProducts();
+
 			for ($i=0; $i < count($products); $i++) { 
-			if($_SESSION['cart_items'][$i+1] > 0){
-				$product = $products[$i];
-				echo "Quantity: " . $_SESSION['cart_items'][$i+1] . " " ;
-				echo $product->title . " ";
 
-				echo $product->price . " sek";
+				if (isset($_SESSION['cart_items'])){
+					if(array_key_exists ( $i+1, $_SESSION['cart_items'] )){
+						if($_SESSION['cart_items'][$i+1] > 0){
 
-				?>
-				<form method="get" action="RemoveFromCart.php">
-					<input type="hidden" name="product_id" value="<?php echo $product->productId; ?>">
-					<input type="submit" id="submit" value="Remove">
-				</form>
-					<?php
+							$product = $products[$i];
+							echo "Quantity: " . $_SESSION['cart_items'][$i+1] . " " ;
+							echo $product->title . " ";
+
+							echo $product->price . " sek";
+
+							?>
+							<form method="get" action="RemoveFromCart.php">
+								<input type="hidden" name="product_id" value="<?php echo $product->productId; ?>">
+								<input type="submit" id="submit" value="Remove">
+							</form>
+							<?php
+						}
+					}
 				}
 			}
+
 			?>
 		<form method="get" action="CheckOut.php">
 			<input type="submit" id="submit" value="Checkout">

@@ -11,6 +11,7 @@
  	if($dbHandle->checkPwd($pass, $uname)){
  		setLoginCookie($uname);
  		echo "Logged in";
+
  		header('Location: http://'.$_SERVER['HTTP_HOST'] . "/vulnweb/");
 		exit();
  	} else{
@@ -19,6 +20,8 @@
 
  	function setLoginCookie($uname){
  		session_start();
+ 		//session_set_cookie_params($lifetime = 0, $path = '/', $domain, $secure = true, $httponly = true);
  		setcookie("user", $uname, time() + 3600, "/");
+ 		
  	}
 ?>
