@@ -10,7 +10,7 @@ include 'DBHandle.php';
  		
 if($submit){
 	if($comment){
- 		$dbHandle->putComment(strip_tags($comment));
+ 		$dbHandle->putComment(htmlspecialchars($comment));
  		echo "Thanks for your comment!";
 	}else{
 		echo "Please fill in the comment field!";
