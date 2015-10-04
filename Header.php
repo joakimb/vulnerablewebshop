@@ -40,6 +40,9 @@
 			<input type="hidden" name="content" value="guestbook">
 			<input type="submit" id="submit" value="Guestbook">
 		</form>
+		<form class="comments" id="home" method="get" action="index.php">
+			<input type="submit" id="submit" value="Home">
+		</form>
 		Signed in as: <?php echo($_SESSION["uname"]);
 
 		?>
