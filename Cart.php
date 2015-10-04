@@ -53,6 +53,10 @@ session_start();
 		<form method="get" action="CheckOut.php">
 			<input type="submit" id="submit" value="Checkout">
 		</form>
+		<form method="get" action="index.php">
+			<input type="submit" id="submit" value="Back to product listing">
+		</form>
 	</div>
+
 </body>
 </html>

@@ -1,10 +1,10 @@
 <?php
 
 include 'DBHandle.php';
-showGuestbook();
 
-	 	$comment = isset($_POST['comment']) ? $_POST['comment'] : '';
-	 	$submit = isset($_POST['submit']) ? $_POST['submit'] : '';
+
+	 	$comment = isset($_GET['comment']) ? $_GET['comment'] : '';
+	 	$submit = isset($_GET['submit']) ? $_GET['submit'] : '';
 	 	$dbHandle = new DBHandle();
 
  		
@@ -17,6 +17,8 @@ if($submit){
 	}
 
 }
+
+showGuestbook();
 
 
 function showGuestbook(){
@@ -35,10 +37,11 @@ function showGuestbook(){
 	}*/
 ?>
 
-<form action='showGuestbook.php' method='POST'>
+<form action='index.php' method='GET'>
   Comment:<br />
   <textarea name="comment" rows="20" cols="80"></textarea>
   <input name='submit' type='submit' value='Comment' />  
+  <input name='content' type='hidden' value='guestbook' />  
 </form>
 
 	<?php

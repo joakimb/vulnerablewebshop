@@ -18,7 +18,17 @@ ini_set('display_errors', 1);
 		<?php 
 
 			include("Header.php");
-			include("StoreFront.php"); 
+			if(isset($_GET['content'])){
+
+
+				$content = $_GET['content'];
+				if(strcmp($content, "guestbook") == 0){
+					include("Guestbook.php");
+				}
+			
+			} else {
+				include("StoreFront.php"); 
+			}
 
 		?>
 	</div>

@@ -36,7 +36,8 @@
 			<input type="submit" id="submit" value="Show Cart">
 		</form>
 
-		<form class="comments" id="comments" method="get" action="showGuestbook.php">
+		<form class="comments" id="comments" method="get" action="index.php">
+			<input type="hidden" name="content" value="guestbook">
 			<input type="submit" id="submit" value="Guestbook">
 		</form>
 		Signed in as: <?php echo($_SESSION["uname"]);
