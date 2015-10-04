@@ -10,7 +10,7 @@ include 'DBHandle.php';
  		
 if($submit){
 	if($comment){
- 		$dbHandle->putComment($comment);
+ 		$dbHandle->putComment(strip_tags($comment));
  		echo "Thanks for your comment!";
 	}else{
 		echo "Please fill in the comment field!";
@@ -27,14 +27,15 @@ function showGuestbook(){
 
 	$dbHandle = new DBHandle();
 	$comments = $dbHandle->getComments();
-	/*for ($i=0; $i < count($comments); $i++) { 
+	for ($i=0; $i < count($comments); $i++) { 
 
 		$comment = $comments[$i];
 //		echo $comment->user . "<br>";
-		echo $comment->comment . "<br>";
-		echo $comment->commentId . "<br>";
-		echo "<br>";
-	}*/
+//		echo $comment->comment . "<br>";
+//		echo $comment->commentId . "<br>";
+//		echo "<br>";
+		echo $i . '. ' . $comment . '<br /> <br />';
+	}
 ?>
 
 <form action='index.php' method='GET'>

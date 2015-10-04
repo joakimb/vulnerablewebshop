@@ -50,7 +50,7 @@ class DBHandle {
 
 		//			$comment->user = $row["uname"];
 					$comment = $row["comment"];
-					echo $i . '. ' . $comment . '<br /> <br />';
+					
 					$comments[$i] = $comment;
 				}
 
