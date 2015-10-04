@@ -9,6 +9,7 @@
  	if($dbHandle->checkPwd($pass, $uname)){
  		setLoginCookie($uname);
  		echo "Logged in";
+
  		header('Location: http://'.$_SERVER['HTTP_HOST'] . "/vulnweb/");
 		exit();
  	} else{
@@ -21,5 +22,6 @@
         session_destroy();
  		session_start();
  		$_SESSION['uname'] = $uname;
+
  	}
 ?>
