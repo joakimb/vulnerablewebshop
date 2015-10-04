@@ -5,8 +5,6 @@
  	$pass = $_POST["password"]; 
 
  	$dbHandle = new DBHandle();
-// 	$dbPass = $dbHandle->getPwd($uname);
-// 	$isValid = $dbHandle->checkPwd($pass, $uname);
 
  	if($dbHandle->checkPwd($pass, $uname)){
  		setLoginCookie($uname);
@@ -17,8 +15,11 @@
  		echo "Wrong Pass";
  	}
 
- 	function setLoginCookie($uname){
+ 	function setLoginCookie($uname){  
+ 		//setcookie("user", $uname, time() + 3600, "/");
+        session_unset();
+        session_destroy();
  		session_start();
- 		setcookie("user", $uname, time() + 3600, "/");
+ 		$_SESSION['uname'] = $uname;
  	}
 ?>

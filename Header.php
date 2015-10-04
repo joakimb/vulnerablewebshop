@@ -1,5 +1,6 @@
 
 <?php
+	session_start();
 	$loggedIn = validLoginCookie();
 ?>
 
@@ -81,9 +82,9 @@ function cancelSignup(){
 
 	function validLoginCookie(){
 
-		$cookieUser = "user";
+		$cookieUser = "uname";
 
-		return isset($_COOKIE[$cookieUser]);
-	
+		return isset($_SESSION[$cookieUser]);
+		
 	}
 ?>
