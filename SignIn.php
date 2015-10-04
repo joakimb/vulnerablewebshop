@@ -18,8 +18,7 @@
 
  	function setLoginCookie($uname){  
  		//setcookie("user", $uname, time() + 3600, "/");
-        session_unset();
-        session_destroy();
+        session_regenerate_id();
  		session_start();
  		$_SESSION['uname'] = $uname;
 
