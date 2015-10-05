@@ -114,7 +114,7 @@ class DBHandle {
 		$storedPW = $this->getPwd($user);
 		$hashedPW = $this->passwordHash($clearPW);
 		
-		if($hashedPW == $storedPW){
+		if(password_verify($clearPW, $storedPW)){
 			return true;
 		}else{
 			return false;
@@ -122,9 +122,10 @@ class DBHandle {
 	}
 
 	public function passwordHash($password){
-		$salt = "USLAHdlqwindsdjfnNdwluei238943729?!??????**^^:;hsiYgdyuwiwuYsvhjvdsmxzlaaIWGubssakd";
-		$hashedPW = hash(SHA256, $salt.$password);
+		$options = array('cost' => 11);
+//		password_hash($password, PASSWORD_BCRYPT, $options);
 
+		$hashedPW = password_hash($password, PASSWORD_BCRYPT, $options);
 		return $hashedPW;
 	}
 
@@ -166,8 +167,6 @@ class DBHandle {
 
 		$res = $stmt->fetchAll();
 
-
-
 		if(!$res){
 			return 0;
 		}
@@ -175,7 +174,7 @@ class DBHandle {
 		$denRow = $res[0]["Denied"];
 
 		if($attRow >= 3){
-			if($denRow != 0){
+			if($denRow == 0){
 				return 1;
 			}else{
 				$this->clearLoginAttempts($user);
@@ -242,8 +241,8 @@ class DBHandle {
 			echo "Error: " . $e->getMessage();
 			die();
 		}
-		$res = $stmt->fetchAll();
-		return $res;
+//		$res = $stmt->fetchAll();
+//		return $res;
 	}
 	
 
