@@ -25,7 +25,7 @@ session_start();
 
 			$dbHandle = new DBHandle();
 			$products = $dbHandle->getProducts();
-
+			
 			for ($i=0; $i < count($products); $i++) { 
 
 				if (isset($_SESSION['cart_items'])){
@@ -51,6 +51,7 @@ session_start();
 
 			?>
 		<form method="get" action="CheckOut.php">
+			<input type="hidden" name="product_id" value="<?php $_SESSION['cart_items']; ?>">
 			<input type="submit" id="submit" value="Checkout">
 		</form>
 		<form method="get" action="index.php">
