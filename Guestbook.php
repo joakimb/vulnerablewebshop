@@ -44,7 +44,7 @@ function showGuestbook(){
   Comment:<br />
   <textarea name="comment" rows="20" cols="80"></textarea>
   <input name='submit' type='submit' value='Comment' />  
-  <input name='content' type='hidden' value='guestbook' />  
+  <input name='content' type='hidden' value='Guestbook' />  
 </form>
 
 	<?php
