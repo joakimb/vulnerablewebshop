@@ -47,6 +47,9 @@ sudo echo "<VirtualHost *:443>
 </VirtualHost>" > /etc/apache2/sites-enabled/$HOST_NAME.conf;
 
 
+#### MAKE VULNEABL FOR RFI
+sudo sed -i '825s/.*/allow_url_include = On/' /etc/php5/apache2/php.ini 
+
 
 
 sudo service apache2 restart;
