@@ -20,8 +20,18 @@ class DBHandle {
 
     public function putComment($comment){
         try{
+        	$str = "INSERT INTO comments(comment) VALUES('".$comment."')";
+            $query = $this->pdo->prepare($str);
+ 			
+        	/* good
             $query = $this->pdo->prepare("INSERT INTO comments(comment) VALUES(?)");
- 
+            //BAD
+
+            
+         
+			*/
+          
+
             $query->execute(array($comment));
  
             }catch(PDOException $e){
@@ -130,6 +140,7 @@ class DBHandle {
 
 	public function newUser($user, $pass, $addr){
 		try{
+
 		$statement = $this->pdo->prepare("INSERT INTO users(uname, pwd, address) VALUES(?, ?, ?)");
 
 		$hashedPW = $this->passwordHash($pass);
