@@ -19,4 +19,7 @@ Remote File Inclusion:
 
 	öppna upp sårbarhet i index.php:
 		include($_GET['content'] . ".php");
+	öppna upp sårbarhet i php.ini:
+		sudo sed -i '825s/.*/allow_url_include = On/' /etc/php5/apache2/php.ini 
+	lägg upp script på annan server
 	
