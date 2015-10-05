@@ -1,0 +1,22 @@
+XSS:
+ injection:
+ 	1: försvaga hemsida genom att ta bort htmlspecialchars funkar
+ 	2: inte lyckats lura browser att byta charset för att komma runt htmlspecialchars
+ attack:
+
+ 	steal session id POC: lägg i gb:
+ 	<script>
+		alert(document.cookie.match(/PHPSESSID=[^;]+/));
+	</script>
+
+CSRF:
+
+	skicka länk:inget skydd mot csrf
+	skicka länk
+	https://localhost/vulnweb/index.php?comment=haha&submit=Comment&content=guestbook
+
+Remote File Inclusion:
+
+	öppna upp sårbarhet i index.php:
+		include($_GET['content'] . ".php");
+	

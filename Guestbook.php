@@ -10,7 +10,9 @@ include 'DBHandle.php';
  		
 if($submit){
 	if($comment){
- 		$dbHandle->putComment(htmlspecialchars($comment));
+ 		//$dbHandle->putComment(htmlspecialchars($comment));
+ 		/* VULNERABLE EDITION*/
+ 		$dbHandle->putComment($comment);
  		echo "Thanks for your comment!";
 	}else{
 		echo "Please fill in the comment field!";
