@@ -3,6 +3,8 @@ if(!isset($_SESSION)) {
     session_start(); 
 }
  
+
+
 // get the product id
 $id = isset($_GET['product_id']) ? $_GET['product_id'] : "";
 echo $id;
