@@ -5,9 +5,10 @@ ini_set('display_errors', 1);
 $secret = "hehehemligt";
 session_start();
 
+$yo = nonceIsValid( CSRFNonce());
 
-nonceIsValid( CSRFNonce());
-
+echo "<br>";
+var_dump($yo);
 //returns active nonce for a session id or creates a new one valid for 24 Hours
 function CSRFNonce(){
 	checkActive();
@@ -22,6 +23,7 @@ function CSRFNonce(){
 
 function nonceIsValid($nonce){
 	checkActive();
+	global $secret;
 	$arr = explode(";", $nonce);
 	$hash = $arr[0];
 	$ttl= $arr[1];
@@ -31,6 +33,10 @@ function nonceIsValid($nonce){
 	if($ttl < time()){
 		return false;
 	}
+
+	$test = hash("sha512", session_id() . $ttl . $secret) . ";" . $ttl;
+
+	return ! strcmp($test, $nonce);
 
 }
 
