@@ -18,6 +18,45 @@ class DBHandle {
 		}
 	}
 
+	public function getProductPrice($id){
+ 
+                $query = $this->pdo->prepare("SELECT price FROM products where product_id = ?");
+                $query->execute(array($id));
+ 
+                $result = $query->fetch();
+                       
+               
+               return $result["price"];
+               
+				//return $result[0]["price"];
+        }
+ 
+ 
+    public function getProducts(){
+ 
+                $query = $this->pdo->prepare("SELECT * FROM products");
+                $query->execute();
+ 
+                $result = $query->fetchAll();
+                $products = array();   
+ 
+                for ($i=0; $i < count($result); $i++) {
+ 
+                        $row = $result[$i];
+                       
+                        $product = new Product();
+                        $product->productId = $row["product_id"];
+                        $product->title = $row["title"];
+                        $product->price = $row["price"];
+                        $product->description = $row["description"];
+                        $product->imgPath = $row["img_path"];
+                       
+                        $products[$i] = $product;
+                }
+               
+                return $products;
+    }
+
     public function putComment($comment){
         try{
             $query = $this->pdo->prepare("INSERT INTO comments(comment) VALUES(?)");
@@ -58,45 +97,10 @@ class DBHandle {
     }
   
 }
-	public function getProductPrice($id){
-
-		$query = $this->pdo->prepare("SELECT price FROM products where product_id = ?");
-		$query->execute(array($id));
-
-		$result = $query->fetchAll();
-		$products = array();	
-
-		
-		return $result[0]["price"];
-	}
 
 
 
 
-	public function getProducts(){
-
-		$query = $this->pdo->prepare("SELECT * FROM products");
-		$query->execute();
-
-		$result = $query->fetchAll();
-		$products = array();	
-
-		for ($i=0; $i < count($result); $i++) { 
-
-			$row = $result[$i];
-			
-			$product = new Product();
-			$product->productId = $row["product_id"];
-			$product->title = $row["title"];
-			$product->price = $row["price"];
-			$product->description = $row["description"];
-			$product->imgPath = $row["img_path"];
-			
-			$products[$i] = $product;
-		}
-		
-		return $products;
-	}
 
 	public function getPwd($user){
 		try{
