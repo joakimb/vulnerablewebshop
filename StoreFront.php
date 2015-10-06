@@ -10,7 +10,6 @@ function showStoreFront(){
 	$dbHandle = new DBHandle();
 	$products = $dbHandle->getProducts();
 	for ($i=0; $i < count($products); $i++) { 
-
 		$product = $products[$i];
 		echo $product->title . "<br>";
 		echo $product->description. "<br>";

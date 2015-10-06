@@ -36,7 +36,12 @@ sudo echo "<VirtualHost *:443>
 	RewriteRule . /index.php [L]
 	</IfModule>
 	</Directory>
-		
+	
+	<Directory /var/www/html/vulnweb/*/>
+	    Allow from None
+	    Order allow,deny
+	</Directory>
+	
 	SSLEngine on
 	SSLCertificateFile /etc/apache2/sites-enabled/localhost/ssl.crt
     	SSLCertificateKeyFile /etc/apache2/sites-enabled/localhost/ssl.key
