@@ -6,6 +6,6 @@
 
 * cd ~/vulnweb/deployment
 
-* sudo sh deploy.sh <new-db-name> <new-user-name> <pass>
+* sudo sh deploy.sh <new-db-name> <new-user-name> <pass> <random-secret>
 
 Nu kan hemsidan nås på http://localhost/vulnweb/index.php

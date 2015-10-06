@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]
+if [ $# -ne 4 ]
 then
-  echo "usage: database user pass"
+  echo "usage: database user pass secret"
   exit
 fi
 ###### CONFIGURE SSL FOR APACHE2
@@ -55,6 +55,7 @@ sudo service apache2 restart;
 DB=$1
 USER=$2
 PASS=$3
+SECRET=$4
 
 CREATE_USER="grant all on $DB.* to '$USER'@'localhost' identified by '$PASS';"
 DROP_OLD_DB="drop database if exists $DB;"
@@ -84,4 +85,5 @@ echo "Config {" >> ../Config.php
 echo " static \$db = \"$DB\";"  >> ../Config.php
 echo " static \$user = \"$USER\";" >> ../Config.php
 echo " static \$pass = \"$PASS\";" >> ../Config.php
+echo " static \$secret = \"$SECRET\";" >> ../Config.php
 echo "} ?>" >> ../Config.php
