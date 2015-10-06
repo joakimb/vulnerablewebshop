@@ -1,6 +1,6 @@
 <?php
 include 'DBHandle.php';
-
+include 'CSRFProtector.php';
 showStoreFront();
 
 function showStoreFront(){
@@ -20,6 +20,7 @@ function showStoreFront(){
 		<form method="get" action="AddToCart.php">
 			<input type="hidden" name="product_id" value="<?php echo $product->productId; ?>">
 			<input type="submit" id="submit" value="Buy">
+			<input name='csrfp' type='hidden' value='<?php echo CSRFProtector::CSRFNonce(); ?>' /> 
 		</form>
 		<?php
 

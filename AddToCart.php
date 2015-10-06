@@ -1,4 +1,5 @@
 <?php
+include 'CSRFProtector.php';
 if(!isset($_SESSION)) { 
     session_start(); 
 }
@@ -7,6 +8,11 @@ if(!isset($_SESSION)) {
 
 // get the product id
 $id = isset($_GET['product_id']) ? $_GET['product_id'] : "";
+$csrfp = isset($_GET['csrfp']) ? $_GET['csrfp'] : '';
+if(!CSRFProtector::nonceIsValid($csrfp)){
+	echo "MALICIOUS LINK, ABORTING!!!!";
+	die();
+}
 echo $id;
 
 	if(!isset($_SESSION['cart_items'])){
