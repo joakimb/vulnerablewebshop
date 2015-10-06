@@ -37,11 +37,17 @@ sudo echo "<VirtualHost *:443>
 	</IfModule>
 	</Directory>
 	
-	<Directory /var/www/html/vulnweb/*/>
+	<Directory /var/www/html/vulnweb/keys/>
 	    Allow from None
 	    Order allow,deny
 	</Directory>
 	
+        <Directory /var/www/html/vulnweb/deployment/>
+            Allow from None
+            Order allow,deny
+        </Directory>
+
+
 	SSLEngine on
 	SSLCertificateFile /etc/apache2/sites-enabled/localhost/ssl.crt
     	SSLCertificateKeyFile /etc/apache2/sites-enabled/localhost/ssl.key
