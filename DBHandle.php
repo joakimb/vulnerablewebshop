@@ -162,10 +162,10 @@ class DBHandle {
 	}
 
 	public function checkLoginAttempts($user){
-		$stmt = $this->pdo->prepare("SELECT attempts, (CASE when lastlogin is not NULL and DATE_ADD(lastlogin, INTERVAL 30 MINUTE)>NOW() then 1 else 0 end) AS Denied FROM loginattempts WHERE uname = ?");
-		$stmt->execute(array($user));
+		$query = $this->pdo->prepare("SELECT attempts, (CASE when lastlogin is not NULL and DATE_ADD(lastlogin, INTERVAL 30 MINUTE)>NOW() then 1 else 0 end) AS Denied FROM loginattempts WHERE uname = ?");
+		$query->execute(array($user));
 
-		$res = $stmt->fetchAll();
+		$res = $query->fetchAll();
 
 		if(!$res){
 			return 0;
@@ -187,9 +187,9 @@ class DBHandle {
 
 	public function addLoginAttempt($user){
 		try{
-		$stmt = $this->pdo->prepare("SELECT attempts FROM loginattempts WHERE uname = ?");
-		$stmt->execute(array($user));
-		$res = $stmt->fetchAll();
+		$query = $this->pdo->prepare("SELECT attempts FROM loginattempts WHERE uname = ?");
+		$query->execute(array($user));
+		$res = $query->fetchAll();
 		}catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 			die();
@@ -203,45 +203,45 @@ class DBHandle {
 
 			if($attempts == 3){
 				try{
-					$stmt = $this->pdo->prepare("UPDATE loginattempts SET attempts = ?, lastlogin = NOW() WHERE uname = ?");
-					$stmt->execute(array($attempts, $user));
+					$query = $this->pdo->prepare("UPDATE loginattempts SET attempts = ?, lastlogin = NOW() WHERE uname = ?");
+					$query->execute(array($attempts, $user));
 				}catch (PDOException $e) {
 					echo "Error: " . $e->getMessage();
 					die();
 				}
-				//$res = $stmt->fetchAll();
+				//$res = $query->fetchAll();
 			}else{
 				try{
-					$stmt = $this->pdo->prepare("UPDATE loginattempts SET attempts = ? WHERE uname = ?");
-					$stmt->execute(array($attempts, $user));
+					$query = $this->pdo->prepare("UPDATE loginattempts SET attempts = ? WHERE uname = ?");
+					$query->execute(array($attempts, $user));
 				}catch (PDOException $e) {
 					echo "Error: " . $e->getMessage();
 					die();
 				}
-		//	$res = $stmt->fetchAll();
+		//	$res = $query->fetchAll();
 			}
 		}else{
 					try{
-			$stmt = $this->pdo->prepare("INSERT INTO loginattempts(uname, attempts, lastlogin) VALUES(?, ?, NOW())");
-			$stmt->execute(array($user, 1));
+			$query = $this->pdo->prepare("INSERT INTO loginattempts(uname, attempts, lastlogin) VALUES(?, ?, NOW())");
+			$query->execute(array($user, 1));
 		}catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 			die();
 		}
 		}
 
-		//$res = $stmt->fetchAll();
+		//$res = $query->fetchAll();
 	}
 
 	public function clearLoginAttempts($user){
 		try{
-			$stmt = $this->pdo->prepare("UPDATE loginattempts SET attempts = 0 WHERE uname = ?");
-			$stmt->execute(array($user));
+			$query = $this->pdo->prepare("UPDATE loginattempts SET attempts = 0 WHERE uname = ?");
+			$query->execute(array($user));
 		}catch (PDOException $e) {
 			echo "Error: " . $e->getMessage();
 			die();
 		}
-//		$res = $stmt->fetchAll();
+//		$res = $query->fetchAll();
 //		return $res;
 	}
 	
