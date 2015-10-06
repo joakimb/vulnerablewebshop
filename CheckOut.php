@@ -36,6 +36,13 @@ if(!isset($_SESSION["uname"])){
 		<?php 
 			include "DBHandle.php" ;
 			include("Header.php");
+			include "CSRFProtector.php";
+			
+			$csrfp = isset($_GET['csrfp']) ? $_GET['csrfp'] : '';
+			if(!CSRFProtector::nonceIsValid($csrfp)){
+				echo "MALICIOUS LINK, ABORTING!!!!";
+				die();
+			}
 
 			$dbHandle = new DBHandle();
 			         // get the product id
