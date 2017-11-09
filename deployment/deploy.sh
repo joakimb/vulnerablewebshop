@@ -7,7 +7,7 @@ then
 fi
 ###### CONFIGURE SSL FOR APACHE2
 
-cd /app/deployment
+cd /app/vulnweb/deployment
 
 HOST_NAME="localhost";
 sudo a2ensite $HOST_NAME;
