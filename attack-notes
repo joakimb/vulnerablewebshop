@@ -14,6 +14,8 @@ CSRF:
 	skicka länk:inget skydd mot csrf
 	skicka länk
 	https://localhost/vulnweb/index.php?comment=haha&submit=Comment&content=guestbook
+  persistent version:
+  <iframe src="https://192.168.10.174:4400/vulnweb/CheckOut.php?product_id=1"> i GB
 
 Remote File Inclusion:
 
