@@ -18,6 +18,7 @@ static function CSRFNonce(){
 }
 
 static function nonceIsValid($nonce){
+  /*
 	if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -35,9 +36,12 @@ static function nonceIsValid($nonce){
 
 	return ! strcmp($test, $nonce);
 
+   */
+  return true;
 }
 
 static function checkActive(){
+
 	if(!isset($_SESSION["uname"])){
 		echo ("NO ACTIVE SESSION, ABORTING");
 		die();
