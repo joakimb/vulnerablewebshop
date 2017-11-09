@@ -16,7 +16,7 @@ if($submit){
 			echo "MALICIOUS LINK, ABORTING!!!!";
 			die();
 		}
- 		$dbHandle->putComment(htmlspecialchars($comment));
+ 		$dbHandle->putComment($comment);
  		echo "Thanks for your comment!";
 	}else{
 		echo "Please fill in the comment field!";
