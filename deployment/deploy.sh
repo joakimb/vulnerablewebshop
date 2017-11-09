@@ -81,7 +81,8 @@ CREATE_TABLE_LOGINATTEMPTS="create table loginattempts(uname varchar(100) primar
 
 QUERY=${CREATE_USER}${DROP_OLD_DB}${CREATE_DB}${USE_DB}${CREATE_TABLE_PRODUCTS}${CREATE_TABLE_USERS}${CREATE_TABLE_COMMENTS}${CREATE_TABLE_LOGINATTEMPTS}
 
-mysql -u root -p -e "$QUERY"
+mysql -e "$QUERY"
+#mysql -u root -p -e "$QUERY"
 
 ###### FILL PRODUCT INVENTORY
 
