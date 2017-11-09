@@ -7,6 +7,8 @@ then
 fi
 ###### CONFIGURE SSL FOR APACHE2
 
+cd /app/deployment
+
 HOST_NAME="localhost";
 sudo a2ensite $HOST_NAME;
 sudo a2enmod ssl;
@@ -99,3 +101,6 @@ echo " static \$user = \"$USER\";" >> ../Config.php
 echo " static \$pass = \"$PASS\";" >> ../Config.php
 echo " static \$secret = \"$SECRET\";" >> ../Config.php
 echo "} ?>" >> ../Config.php
+
+while true; do echo "is deployed"; sleep 10; done
+
