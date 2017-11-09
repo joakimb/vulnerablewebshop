@@ -1,5 +1,6 @@
 <?php
 include 'DBHandle.php';
+include 'CSRFProtector.php';
 if($_SERVER['SERVER_PORT'] != '443') {
 	header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 	exit();
@@ -25,7 +26,7 @@ session_start();
 
 			$dbHandle = new DBHandle();
 			$products = $dbHandle->getProducts();
-
+			
 			for ($i=0; $i < count($products); $i++) { 
 
 				if (isset($_SESSION['cart_items'])){
@@ -51,6 +52,8 @@ session_start();
 
 			?>
 		<form method="get" action="CheckOut.php">
+			<input type="hidden" name="product_id" value="<?php $_SESSION['cart_items']; ?>">
+			<input name='csrfp' type='hidden' value='<?php echo CSRFProtector::CSRFNonce(); ?>' /> 
 			<input type="submit" id="submit" value="Checkout">
 		</form>
 		<form method="get" action="index.php">
