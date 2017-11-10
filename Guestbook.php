@@ -12,14 +12,6 @@ include 'CSRFProtector.php';
  		
 if($submit){
 	if($comment){
- 		//$dbHandle->putComment(htmlspecialchars($comment));
- 		/* VULNERABLE EDITION*/
-    /*
-		if(!CSRFProtector::nonceIsValid($csrfp)){
-			echo "MALICIOUS LINK, ABORTING!!!!";
-			die();
-		}
-     */
  		$dbHandle->putComment($comment);
  		echo "Thanks for your comment!";
 	}else{
@@ -40,14 +32,11 @@ function showGuestbook(){
 	for ($i=0; $i < count($comments); $i++) { 
 
 		$comment = $comments[$i];
-//		echo $comment->user . "<br>";
-//		echo $comment->comment . "<br>";
-//		echo $comment->commentId . "<br>";
-//		echo "<br>";
 		echo $i . '. ' . $comment . '<br /> <br />';
 	}
 ?>
 
+<!-- form for inserting a comment into the comments table -->
 <form action='index.php' method='GET'>
   Comment:<br />
   <textarea name="comment" rows="20" cols="80"></textarea>
